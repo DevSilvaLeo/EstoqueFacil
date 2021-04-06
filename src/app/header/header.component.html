@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">My Stock - By The ONE Software</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-item nav-link active" [routerLink]="['/principal']"><i class="fa fa-home" style="font-size:23px; color:white"></i><span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" [routerLink]="['/usuario']" routerLinkActive="router-link-active" >Gerenciar Usuários</a>
+        <a class="nav-item nav-link" [routerLink]="['/produto']" routerLinkActive="router-link-active" >Gerenciar Produtos</a>
+        <a class="nav-item nav-link" [routerLink]="['/estoque']" routerLinkActive="router-link-active" >Gerenciar Estoque</a>
+        <a class="nav-item nav-link" [routerLink]="['/loja']" routerLinkActive="router-link-active" >Loja</a>
+        <a class="nav-item nav-link disabled" href="#"></a><a class="nav-item nav-link disabled" href="#"></a>
+        <a class="nav-item nav-link disabled" href="#"></a><a class="nav-item nav-link disabled" href="#"></a>
+        <a class="nav-item nav-link disabled" href="#"></a><a class="nav-item nav-link disabled" href="#"></a>
+        <a class="nav-item nav-link disabled" href="#"></a><a class="nav-item nav-link disabled" href="#"></a>
+        <a class="nav-item nav-link disabled" href="#"></a><a class="nav-item nav-link disabled" href="#"></a>
+        <a class="nav-item nav-link disabled" href="#"></a><a class="nav-item nav-link disabled" href="#"></a>
+        <a class="nav-item nav-link active" href="#" (click)="logout()"><i class="fa fa-power-off" style="font-size:23px"></i></a>
+        </div>
+    </div>
+</nav>

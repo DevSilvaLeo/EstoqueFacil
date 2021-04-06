@@ -1,0 +1,84 @@
+<app-topo></app-topo>
+<br/>
+<section class="table-responsive">
+    <button type="button" class="btn btn-primary" data-toggle="modal" style="float:right;" data-target=".myUserModal"><i class="fa fa-plus" style="font-size:24px; color:white;"></i> Adicionar</button>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Preço Unitário</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody class="table-hover">
+          <tr *ngFor="let items of produtosGrid">
+            <th scope="row"></th>
+            <td>{{items.NomeProduto}}</td>
+            <td>{{items.Categoria}}</td>
+            <td>{{items.Preco}}</td>
+            <td><a data-toggle="modal" href="#" data-target=".myUserModal" (click)="preencheForm(items.Id)"><i class="fa fa-edit" style="font-size:24px; color:blue"></i></a> | <a href="#" (click)="remover(items.id)"><i class="fa fa-trash" style="font-size:24px; color:red"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="modal fade myUserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+                <h5 class="modal-title" id="exampleModalLabel">Formulário de cadastro de novos usuários</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form">
+                  <input type="text" name="idproduto" formControlName="idproduto" hidden />
+                  <div class="form-group">
+                    <label for="nome" class="col-form-label">Nome do Produto</label>
+                    <input type="text" class="form-control" name="nomeproduto" formControlName="nomeproduto"><!-- PAREI AQUI!!! -->
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="col-form-label">Descrição</label>
+                    <textarea class="form-control" name="descricao" type="text" formControlName="descricao"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="senha" class="col-form-label">Categoria</label>
+                    <select class="form-control" name="categoria" formControlName="categoria">
+                      <option value="">Selecione</option>
+                      <option value="Camisetas">Camisetas</option>
+                      <option value="Almofadas">Almofadas</option>
+                      <option value="Louças">Louças</option>
+                      <option value="Sacolas">Sacolas</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="quantidade" class="col-form-label">Quantidade disponível</label>
+                    <input type="text" id="quantidade" class="form-control" name="quantidade" formControlName="quantidade" />
+                  </div>
+                  <div class="form-group">
+                    <label for="preco" class="col-form-label">Preço Unitário</label>
+                    <input type="text" id="preco" class="form-control" name="preco" formControlName="preco" />
+                  </div>
+                  <div class="form-group">
+                    <label for="fotoProduto" class="col-form-label">Anexar Foto
+                      <input type="file" class="form-control" name="foto" (change)="carregarImagens($event)"/></label>                    
+                    <button class="btn btn-sm btn-primary mb-2 m-2" (click)="anexar()">UP</button>
+                    <div *ngIf="currentFileUpload" class="progress">
+                      <div class="progress-bar progress-bar-info progress-bar-striped"
+                        role="progressbar" attr.aria-valuenow="{{percentage}}"
+                        aria-valuemin="0" aria-valuemax="100"
+                        [ngStyle]="{width: percentage+'%'}">{{percentage}}%</div>
+                    </div>
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="cadastrar()" [disabled]="form.invalid">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</section> 

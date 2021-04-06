@@ -1,0 +1,55 @@
+
+<app-topo></app-topo>
+<br/>
+<section class="table-responsive">
+    <button type="button" class="btn btn-primary" data-toggle="modal" style="float:right;" data-target=".myUserModal"><i class="fa fa-plus" style="font-size:24px; color:white;"></i> Adicionar</button>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody class="table-hover">
+          <tr *ngFor="let items of usuarios">
+            <th scope="row">{{items.uid}}</th>
+            <td>{{items.Nome}}</td>
+            <td>{{items.Email}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="modal fade myUserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+                <h5 class="modal-title" id="exampleModalLabel">Formulário de cadastro de novos usuários</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form">
+                  <div class="form-group">
+                    <label for="nome" class="col-form-label">Nome</label>
+                    <input type="text" class="form-control" formControlName="nome">
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="col-form-label">Email</label>
+                    <input class="form-control" type="text" formControlName="email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="senha" class="col-form-label">Senha</label>
+                    <input class="form-control" type="password" formControlName="senha" />
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="cadastrar()" [disabled]="form.invalid">Cadastrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</section> 
